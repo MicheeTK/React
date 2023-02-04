@@ -1,7 +1,5 @@
 export default function Job(props) {
-  const salary = props.salary;
-  const position = props.position;
-  const company = props.company;
+  const { salary, position, company } = props;
   return (
     <div>
       <p>Salary: {salary}</p>
