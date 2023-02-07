@@ -30,13 +30,14 @@ export default function App() {
   return (
     <div className="App">
       {jobListingdb.map((job) => (
-        <Job
-          id={job.id}
-          position={job.position}
-          company={job.company}
-          location={job.location}
-          description={job.description}
-        />
+        // <Job
+        //   id={job.id}
+        //   position={job.position}
+        //   company={job.company}
+        //   location={job.location}
+        //   description={job.description}
+        // />
+        <Job details={job} key={job.id} />
       ))}
     </div>
   );

@@ -1,5 +1,5 @@
 export default function Job(props) {
-  const { id, position, company, location, description } = props;
+  const { id, position, company, location, description } = props.details;
   return (
     <div>
       <b>ID: </b> {id}
