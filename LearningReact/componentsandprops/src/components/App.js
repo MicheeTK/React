@@ -29,7 +29,7 @@ export default function App() {
   ];
   return (
     <div className="App">
-      {jobListingdb.map((job) => (
+      {jobListingdb.map((job, index) => (
         // <Job
         //   id={job.id}
         //   position={job.position}
@@ -37,7 +37,7 @@ export default function App() {
         //   location={job.location}
         //   description={job.description}
         // />
-        <Job details={job} key={job.id} />
+        <Job details={job} key={index} />
       ))}
     </div>
   );
