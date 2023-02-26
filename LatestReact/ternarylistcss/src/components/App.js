@@ -1,5 +1,6 @@
 import "./App.css";
 import Youngster from "./Youngster";
+import AllCitizens from "./AllCitizens";
 
 function App() {
   const users = [
@@ -12,16 +13,32 @@ function App() {
     { name: "Arthur", age: 19, height: 1.68 },
     { name: "Mark", age: 18, height: 1.58 },
   ];
-  const classifyCitizens = true;
+  const typeOfcitizens = "junior";
+  let youth = false;
+
+  switch (typeOfcitizens) {
+    case "junior":
+      youth = true;
+      break;
+
+    default:
+      break;
+  }
   return (
     <div className="App">
-      {classifyCitizens ? (
-        users.map((user, key) => (
-          <Youngster name={user.name} age={user.age} key={key} />
-        ))
+      {youth ? (
+        <h2>List of fresh blooded citizens</h2>
       ) : (
-        <p>Not a youngster</p>
+        <h2>List of All citizens</h2>
       )}
+
+      {youth
+        ? users.map((user, key) => (
+            <Youngster name={user.name} age={user.age} key={key} />
+          ))
+        : users.map((user, key) => (
+            <AllCitizens name={user.name} age={user.age} key={key} />
+          ))}
     </div>
   );
 }
