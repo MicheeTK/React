@@ -7,6 +7,7 @@ import Millenials from "./Millennials";
 import GenZ from "./GenZ";
 import GenAlpha from "./GenAlpha";
 import AllCitizens from "./AllCitizens";
+import { useState } from "react";
 //Assume we have a database of people then we want to render the list of people in the data base based on there generation.
 function App() {
   const users = [
@@ -27,7 +28,10 @@ function App() {
     { name: "Chris", age: 17, height: 1.68, race: "Bantu" },
     { name: "Grace", age: 12, height: 1.45, race: "hispanic" },
   ];
-  const typeOfcitizens = "genAlpha";
+  const [typeOfcitizens, useTypeOfCitizens] = useState("");
+  const ChooseTypeOfcitizens = (event) => {
+    useTypeOfCitizens(event.target.value);
+  };
 
   let allCitizens,
     traditionalists,
@@ -38,6 +42,10 @@ function App() {
     genAlpha = false;
 
   switch (typeOfcitizens) {
+    case "allCitizens":
+      allCitizens = true;
+      break;
+
     case "traditionalists":
       traditionalists = true;
       break;
@@ -63,11 +71,22 @@ function App() {
       break;
 
     default:
-      allCitizens = true;
       break;
   }
   return (
     <div className="App">
+      <label htmlFor="typ-of-citizens">Enter citizen age group: &emsp;</label>
+      <select id="typ-of-citizens" onChange={ChooseTypeOfcitizens}>
+        <option>--Please choose an option--</option>
+        <option value="allCitizens">All Citizens</option>
+        <option value="traditionalists">Traditionalists</option>
+        <option value="babyBoomers">Baby Boomers</option>
+        <option value="genX">Generation X</option>
+        <option value="millenials">Millenials</option>
+        <option value="genZ">Generation Z</option>
+        <option value="genAlpha">Generation Alpha</option>
+      </select>
+      {/* <button>Request</button> */}
       {traditionalists ? <h2>Citizens born between 1928-1945</h2> : <></>}
       {traditionalists ? users.map((user, key) => <SilentGen name={user.name} age={user.age} race={user.race} key={key} />) : <Empty />}
 
