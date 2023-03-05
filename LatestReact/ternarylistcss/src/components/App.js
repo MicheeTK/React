@@ -75,7 +75,9 @@ function App() {
   }
   return (
     <div className="App">
-      <label htmlFor="typ-of-citizens">Enter citizen age group: &emsp;</label>
+      <label htmlFor="typ-of-citizens" id="age-group-req-msg">
+        Enter citizen age group: &emsp;
+      </label>
       <select id="typ-of-citizens" onChange={ChooseTypeOfcitizens}>
         <option>--Please choose an option--</option>
         <option value="allCitizens">All Citizens</option>
